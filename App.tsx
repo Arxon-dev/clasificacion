@@ -134,7 +134,7 @@ function App() {
               </div>
               <div>
                 <p className="font-bold">Aviso Importante</p>
-                <p className="text-sm">Esta es una herramienta NO OFICIAL creada por la comunidad para la AEO. Los datos son introducidos por los usuarios y pueden no ser 100% ciertos o completos. <span className="font-semibold block mt-1">La clasificación es solo estimativa y referencial, y NO sustituye la publicación oficial de resultados.</span></p>
+                <p className="text-sm">Esta es una herramienta NO OFICIAL creada por OpoMelilla.com para la AEO. Los datos son introducidos por los usuarios y pueden no ser 100% ciertos o completos. <span className="font-semibold block mt-1">La clasificación es solo estimativa y referencial, y NO sustituye la publicación oficial de resultados.</span></p>
               </div>
             </div>
           </div>
