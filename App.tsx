@@ -90,7 +90,7 @@ function App() {
         <header className="text-center mb-8 flex flex-col items-center">
             <SpanishArmyShieldIcon />
             <h1 className="text-3xl md:text-4xl font-extrabold text-green-400 uppercase tracking-widest mt-2">
-                Clasificación Oposición
+                Clasificación Permanencia
             </h1>
             <p className="text-lg text-gray-400">Ejército de Tierra</p>
             <p className="text-md text-green-300 font-semibold mt-1">Agrupación de Especialidades Operativas (AEO)</p>
@@ -134,7 +134,7 @@ function App() {
               </div>
               <div>
                 <p className="font-bold">Aviso Importante</p>
-                <p className="text-sm">Esta es una herramienta NO OFICIAL creada por la comunidad para la AEO. Los datos son introducidos por los usuarios y pueden no ser 100% ciertos o completos. <span className="font-semibold block mt-1">La clasificación es solo estimativa y referencial, y NO sustituye la publicación oficial de resultados.</span></p>
+                <p className="text-sm">Esta es una herramienta NO OFICIAL creada por OpoMelilla.com para la AEO. Los datos son introducidos por los usuarios y pueden no ser 100% ciertos o completos. <span className="font-semibold block mt-1">La clasificación es solo estimativa y referencial, y NO sustituye la publicación oficial de resultados.</span></p>
               </div>
             </div>
           </div>

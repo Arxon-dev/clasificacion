@@ -40,6 +40,23 @@ export const createOrUpdateCandidate = async (req, res) => {
     // Verificar si el candidato ya existe
     const exists = await Candidate.exists(numeroOpositor);
     
+    // Verificar si esta IP ya registró un candidato (solo para nuevos registros)
+    if (!exists) {
+      const ipAlreadyRegistered = await Candidate.hasIpRegistered(ipRegistro);
+      if (ipAlreadyRegistered) {
+        const existingCandidate = await Candidate.findByIp(ipRegistro);
+        return res.status(409).json({
+          success: false,
+          message: 'Ya has registrado un candidato desde esta ubicación',
+          data: {
+            numeroOpositor: existingCandidate?.numero_opositor,
+            nota: existingCandidate?.nota,
+            fechaRegistro: existingCandidate?.fecha_registro
+          }
+        });
+      }
+    }
+    
     const result = await Candidate.createOrUpdate(numeroOpositor, nota, ipRegistro);
     
     res.status(exists ? 200 : 201).json({

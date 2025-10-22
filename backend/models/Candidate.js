@@ -330,4 +330,67 @@ export class Candidate {
       return memoryHistory.filter(entry => entry.numero_opositor === numeroOpositor);
     }
   }
+
+  // Verificar si una IP ya registró un candidato activo
+  static async hasIpRegistered(ipAddress) {
+    try {
+      const dbConnected = await testConnection();
+      
+      if (dbConnected) {
+        const query = `
+          SELECT COUNT(*) as count 
+          FROM candidatos 
+          WHERE ip_registro = ? AND activo = TRUE
+        `;
+        
+        const result = await executeQuery(query, [ipAddress]);
+        return result[0].count > 0;
+      } else {
+        // Usar almacenamiento en memoria
+        for (let candidate of memoryStorage.values()) {
+          if (candidate.ip_registro === ipAddress && candidate.activo === 1) {
+            return true;
+          }
+        }
+        return false;
+      }
+    } catch (error) {
+      console.error('Error al verificar IP registrada:', error);
+      return false; // En caso de error, permitir el registro
+    }
+  }
+
+  // Obtener candidato por IP
+  static async findByIp(ipAddress) {
+    try {
+      const dbConnected = await testConnection();
+      
+      if (dbConnected) {
+        const query = `
+          SELECT numero_opositor, nota, fecha_registro 
+          FROM candidatos 
+          WHERE ip_registro = ? AND activo = TRUE
+          LIMIT 1
+        `;
+        
+        const result = await executeQuery(query, [ipAddress]);
+        return result[0] || null;
+      } else {
+        // Usar almacenamiento en memoria
+        for (let candidate of memoryStorage.values()) {
+          if (candidate.ip_registro === ipAddress && candidate.activo === 1) {
+            return {
+              numero_opositor: candidate.numero_opositor,
+              nota: candidate.nota,
+              fecha_registro: candidate.fecha_registro
+            };
+          }
+        }
+        return null;
+      }
+    } catch (error) {
+      console.error('Error al buscar candidato por IP:', error);
+      return null;
+    }
+  }
 }
