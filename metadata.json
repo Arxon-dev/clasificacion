@@ -1,0 +1,5 @@
+{
+  "name": "Clasificación Oposición Ejército",
+  "description": "Una aplicación para que los opositores al Ejército de Tierra de España puedan publicar su número de opositor y nota para estimar su posición en la clasificación. Esta herramienta no es oficial.",
+  "requestFramePermissions": []
+}
