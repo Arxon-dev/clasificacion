@@ -1,6 +1,9 @@
 import { Candidate } from '../types';
 
-const API_BASE_URL = 'http://localhost:3005/api';
+// URL base de la API que funciona tanto en desarrollo como en producción
+const API_BASE_URL = process.env.NODE_ENV === 'production' 
+  ? '/api' 
+  : 'http://localhost:3005/api';
 
 // Configuración de fetch con headers por defecto
 const fetchConfig = {
