@@ -8,15 +8,25 @@ export const corsOptions = {
     // Permitir requests sin origin (aplicaciones móviles, Postman, etc.)
     if (!origin) return callback(null, true);
     
+    const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:5173';
     const allowedOrigins = [
-      process.env.FRONTEND_URL || 'http://localhost:5173',
+      frontendUrl,
+      frontendUrl.replace(/\/$/, ''), // Sin barra final
+      frontendUrl + (frontendUrl.endsWith('/') ? '' : '/'), // Con barra final
       'http://localhost:3000',
       'http://localhost:3001',
+      'http://localhost:5173',
       'http://127.0.0.1:5173',
-      'http://127.0.0.1:3000'
+      'http://127.0.0.1:3000',
+      'https://clasificacion-three.vercel.app',
+      'https://clasificacion-9larq88ay-opomelillas-projects.vercel.app'
     ];
     
+    console.log(`🔍 CORS: Verificando origen: ${origin}`);
+    console.log(`🔍 CORS: Orígenes permitidos:`, allowedOrigins);
+    
     if (allowedOrigins.indexOf(origin) !== -1) {
+      console.log(`✅ CORS: Origen permitido: ${origin}`);
       callback(null, true);
     } else {
       console.warn(`🚫 CORS: Origen no permitido: ${origin}`);
