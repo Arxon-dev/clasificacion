@@ -12,6 +12,25 @@ const SpanishArmyShieldIcon = () => (
     </svg>
 );
 
+const TelegramIcon = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
+        <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.568 8.16l-1.58 7.44c-.12.54-.43.67-.87.42l-2.4-1.77-1.16 1.12c-.13.13-.24.24-.49.24l.17-2.47 4.54-4.1c.2-.18-.04-.28-.31-.1L9.39 13.17l-2.27-.71c-.49-.15-.5-.49.1-.73l8.86-3.42c.41-.15.77.1.63.69z"/>
+    </svg>
+);
+
+const TelegramButton = () => (
+    <a 
+        href="https://t.me/permanencia_opomelilla" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold py-3 px-6 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200 border border-blue-400 hover:border-blue-300"
+    >
+        <TelegramIcon />
+        <span className="text-sm font-bold">Únete al Grupo de Telegram</span>
+        <span className="text-xs bg-blue-400 px-2 py-1 rounded-full">OpoMelilla Permanencia</span>
+    </a>
+);
+
 
 function App() {
   const [candidates, setCandidates] = useState<CandidateWithPosition[]>([]);
@@ -94,6 +113,11 @@ function App() {
             </h1>
             <p className="text-lg text-gray-400">Ejército de Tierra</p>
             <p className="text-md text-green-300 font-semibold mt-1">Agrupación de Especialidades Operativas (AEO)</p>
+            
+            {/* Botón de Telegram */}
+            <div className="mt-6">
+                <TelegramButton />
+            </div>
         </header>
         
         <main>
